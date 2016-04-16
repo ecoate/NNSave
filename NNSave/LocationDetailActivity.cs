@@ -14,6 +14,7 @@ using NNSave.Extensions;
 
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using System.Threading.Tasks;
 
 namespace NNSave
 {
@@ -22,6 +23,9 @@ namespace NNSave
     {
         private List<Location> locationList = new List<Location>();
         private ListView locationDetailListView;
+        ImageView _GetDirectionsActionImageView;
+        LatLng _GeocodedLocation;
+        GoogleMap _GoogleMap;
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -54,9 +58,38 @@ namespace NNSave
 
         }
 
-        public void OnMapReady(GoogleMap googleMap)
+        public async void OnMapReady(GoogleMap googleMap)
         {
-            throw new NotImplementedException();
+            _GoogleMap = googleMap;
+            _GoogleMap.UiSettings.MapToolbarEnabled = true;
+            _GeocodedLocation = await GetPositionAsync();
+
+            if (_GeocodedLocation != null)
+            {
+                // because we now have coordinates, show the get directions action image view, and wire up its click handler
+               // _GetDirectionsActionImageView.Visibility = ViewStates.Visible;
+
+                // initialze the map
+                MapsInitializer.Initialize(this);
+
+                // display the map region that contains the point. (the zoom level has been defined on the map layout in AcquaintanceDetail.axml)
+                _GoogleMap.MoveCamera(CameraUpdateFactory.NewLatLng(_GeocodedLocation));
+
+                // create a new pin
+                var marker = new MarkerOptions();
+
+                // set the pin's position
+                marker.SetPosition(new LatLng(_GeocodedLocation.Latitude, _GeocodedLocation.Longitude));
+
+                // add the pin to the map
+                _GoogleMap.AddMarker(marker);
+            }
+
+        }
+
+        async Task<LatLng> GetPositionAsync()
+        {
+            return new LatLng(37.063892, -76.493166);
         }
     }
 }
