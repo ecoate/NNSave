@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="#FFFFFF"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dip"
+        android:layout_marginBottom="139.5dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dip"
+            android:layout_marginBottom="28.0dp">
+            <TextView
+                android:id="@+id/locationNameTextView"
+                android:layout_width="200dp"
+                android:textSize="24dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_alignParentLeft="true"
+                android:textStyle="bold"
+                android:gravity="left" />
+            <TextView
+                android:id="@+id/locationPhoneTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="@android:color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:layout_below="@+id/locationNameTextView" />
+            <TextView
+                android:id="@+id/locationAddressTextView"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:gravity="left"
+                android:textSize="12dp"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/locationPhoneTextView" />
+            <TextView
+                android:id="@+id/locationWebsiteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="@android:color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:layout_below="@+id/locationAddressTextView" />
+            <TextView
+                android:id="@+id/locationVistCountTextView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_alignParentRight="true"
+                android:textColor="@android:color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:gravity="right" />
+            <TextView
+                android:id="@+id/locationDescriptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@android:color/black"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:layout_below="@+id/locationWebsiteTextView" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

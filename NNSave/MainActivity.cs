@@ -30,12 +30,6 @@ namespace NNSave
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-           // Button button = FindViewById<Button>(Resource.Id.MyButton);
-
-            //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
-
             locationListView = FindViewById<ListView>(Resource.Id.locationsListView);
             locationListView.ItemClick += Item_Clicked;
 
@@ -61,8 +55,9 @@ namespace NNSave
             intent.PutExtra("LocationName", clickedLoc.name);
             intent.PutExtra("LocationAddress", clickedLoc.address);
             intent.PutExtra("LocationPhone", clickedLoc.phone);
-            //intent.PutExtra("LocationEmail", clickedLoc.email.ToString());
+            intent.PutExtra("LocationEmail", clickedLoc.email);
             intent.PutExtra("LocationDescription", clickedLoc.description);
+            intent.PutExtra("LocationVisitCount", clickedLoc.visitCount);
             intent.PutExtra("LocationLat", clickedLoc.latitude);
             intent.PutExtra("LocationLon", clickedLoc.longitude);
             StartActivity(intent);
