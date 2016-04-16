@@ -18,6 +18,7 @@ namespace NNSave
         int count = 1;
         private List<Location> locationList = new List<Location>();
         private ListView locationListView;
+        private RetrieveData dataGetter = new RetrieveData();
         protected override async void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -31,20 +32,40 @@ namespace NNSave
 
             // Get our button from the layout resource,
             // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+           // Button button = FindViewById<Button>(Resource.Id.MyButton);
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+            //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
 
             locationListView = FindViewById<ListView>(Resource.Id.locationsListView);
-            Location test = new Location();
-            test.address = "123 testing address";
-            test.name = "Plaza Azteca";
-            test.visitCount = 165;
-            locationList.Add(test);
-            locationList.Add(test);
-            locationList.Add(test);
+            locationListView.ItemClick += Item_Clicked;
 
+            //test data
+            //Location test = new Location();
+            //test.address = "123 testing address";
+            //test.name = "Plaza Azteca";
+            //test.visitCount = 165;
+            //locationList.Add(test);
+            //locationList.Add(test);
+            //locationList.Add(test);
+
+            //real data
+            locationList = await dataGetter.GetAllLocations();            
             locationListView.Adapter = new LocationListAdapter(this, locationList);
+        }
+
+        protected void Item_Clicked(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var intent = new Intent(this, typeof(LocationDetailActivity));
+            Location clickedLoc = new Location();
+            clickedLoc = locationList[e.Position];
+            intent.PutExtra("LocationName", clickedLoc.name);
+            intent.PutExtra("LocationAddress", clickedLoc.address);
+            intent.PutExtra("LocationPhone", clickedLoc.phone);
+            //intent.PutExtra("LocationEmail", clickedLoc.email.ToString());
+            intent.PutExtra("LocationDescription", clickedLoc.description);
+            intent.PutExtra("LocationLat", clickedLoc.latitude);
+            intent.PutExtra("LocationLon", clickedLoc.longitude);
+            StartActivity(intent);
         }
     }
 }

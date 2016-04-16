@@ -14,7 +14,7 @@ namespace NNSave.Data
         public string phone { get; set; }
         public double latitude { get; set; }
         public double longitude { get; set; }
-        public object email { get; set; }
+        public string email { get; set; }
         public string website { get; set; }
         public string description { get; set; }
         public int visitCount { get; set; }
