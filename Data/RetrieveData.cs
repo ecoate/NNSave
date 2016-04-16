@@ -11,13 +11,13 @@ namespace NNSave.Data
 {
     public class RetrieveData
     {
-        public const string dataServer = "http://private-722921-nnsave.apiary-mock.com/{0}";
-        public const string latlongstr = "locations/?latitude={0}&longitude={1}";
-        public const string idStr = "locations/{0}";
-        public const string baseStr = "locations";
-        public const string latlongdistanceStr = "locations/?latitude={0}&longitude={1}&distance={2}";
-        public const string latlongcountStr = "locations/?latitude={0}&longitude={1}&count={2}";
-        public const string latlngdistcountStr = "locations/?latitude={0}&longitude={1}&distance={2}&count={3}";
+        const string dataServer = "http://private-722921-nnsave.apiary-mock.com/{0}";
+        const string latlongstr = "locations/?latitude={0}&longitude={1}";
+        const string idStr = "locations/{0}";
+        const string baseStr = "locations";
+        const string latlongdistanceStr = "locations/?latitude={0}&longitude={1}&distance={2}";
+        const string latlongcountStr = "locations/?latitude={0}&longitude={1}&count={2}";
+        const string latlngdistcountStr = "locations/?latitude={0}&longitude={1}&distance={2}&count={3}";
 
         #region Get all Locations
 
