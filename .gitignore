@@ -243,3 +243,10 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/NNSave/SplashActivity.cs
+/NNSave/Resources/values/styles.xml
+/NNSave/Resources/layout/Splash.axml
+/NNSave/Resources/drawable/splash.jpg
+/NNSave/Resources/drawable/phone.png
+/NNSave/Resources/drawable/email.png
+/NNSave/Resources/drawable/directions.png
