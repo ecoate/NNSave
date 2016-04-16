@@ -331,9 +331,6 @@ namespace NNSave
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070015
-			public const int MyButton = 2131165205;
-			
 			// aapt resource value: 0x7f070005
 			public const int adjust_height = 2131165189;
 			
@@ -343,8 +340,14 @@ namespace NNSave
 			// aapt resource value: 0x7f07000a
 			public const int auto = 2131165194;
 			
+			// aapt resource value: 0x7f070015
+			public const int bigMap = 2131165205;
+			
 			// aapt resource value: 0x7f07000b
 			public const int dark = 2131165195;
+			
+			// aapt resource value: 0x7f070016
+			public const int goToMapButton = 2131165206;
 			
 			// aapt resource value: 0x7f070000
 			public const int hybrid = 2131165184;
@@ -376,8 +379,8 @@ namespace NNSave
 			// aapt resource value: 0x7f070013
 			public const int locationsDetailListView = 2131165203;
 			
-			// aapt resource value: 0x7f070016
-			public const int locationsListView = 2131165206;
+			// aapt resource value: 0x7f070017
+			public const int locationsListView = 2131165207;
 			
 			// aapt resource value: 0x7f070014
 			public const int map = 2131165204;
@@ -439,7 +442,10 @@ namespace NNSave
 			public const int LocationListRowView = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Main = 2130903043;
+			public const int LocationMapView = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int Main = 2130903044;
 			
 			static Layout()
 			{

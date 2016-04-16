@@ -69,6 +69,7 @@
     <Compile Include="Extensions\ViewExtensions.cs" />
     <Compile Include="LocationDetailActivity.cs" />
     <Compile Include="Adapters\LocationListAdapter.cs" />
+    <Compile Include="LocationMainMapActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,6 +92,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\LocationDetailRowView.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\LocationMapView.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

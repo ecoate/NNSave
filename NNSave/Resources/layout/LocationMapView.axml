@@ -3,18 +3,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ListView
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/locationsDetailListView" />
     <FrameLayout xmlns:map="http://schemas.android.com/apk/res-auto"
         android:layout_width="fill_parent"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         android:layout_weight="1">
         <com.google.android.gms.maps.MapView
-            android:id="@+id/map"
+            android:id="@+id/bigMap"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             map:cameraZoom="11"
