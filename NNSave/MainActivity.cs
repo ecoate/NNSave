@@ -18,13 +18,13 @@ namespace NNSave
         int count = 1;
         private List<Location> locationList = new List<Location>();
         private ListView locationListView;
-        protected override void OnCreate(Bundle bundle)
+        protected override async void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             var retClass = new RetrieveData();
 
-            //List<Location> locs = retClass.GetAllLocations();
+            List<Location> locs = await retClass.GetAllLocations();
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);

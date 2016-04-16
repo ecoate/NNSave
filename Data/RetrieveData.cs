@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -9,7 +11,7 @@ namespace NNSave.Data
 {
     public class RetrieveData
     {
-        public const string dataServer = "http://private-722921-nnsave.apiary-mock.com/{1}";
+        public const string dataServer = "http://private-722921-nnsave.apiary-mock.com/{0}";
 
         public async Task<List<Location>> GetAllLocations()
         {
@@ -40,8 +42,12 @@ namespace NNSave.Data
 
             using (WebResponse httpRes = await httpReq.GetResponseAsync())
             {
-                var response = httpRes.GetResponseStream();
-                //response.
+                using (var reader = new StreamReader(httpRes.GetResponseStream()))
+                {
+                    var str = reader.ReadToEnd();
+                    locList = JsonConvert.DeserializeObject<List<Location>>(str);
+
+                }
             }
 
             return locList;
