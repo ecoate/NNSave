@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using NNSave.Data;
+using System.Collections.Generic;
 
 namespace NNSave
 {
@@ -13,11 +14,14 @@ namespace NNSave
     public class MainActivity : Activity
     {
         int count = 1;
-        Location loc = new Location();
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            var retClass = new RetrieveData();
+
+            //List<Location> locs = retClass.GetAllLocations();
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);

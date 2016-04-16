@@ -18,6 +18,7 @@ namespace NNSave.Data
         public string website { get; set; }
         public string description { get; set; }
         public int visitCount { get; set; }
+        public double distance { get; set; }
 
     }
 }
