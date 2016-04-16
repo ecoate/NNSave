@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\LocationDetailAdapter.cs" />
+    <Compile Include="Extensions\ViewExtensions.cs" />
     <Compile Include="LocationDetailActivity.cs" />
     <Compile Include="Adapters\LocationListAdapter.cs" />
     <Compile Include="MainActivity.cs" />

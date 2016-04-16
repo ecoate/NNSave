@@ -32,6 +32,8 @@ namespace NNSave
 
             var locationDetailLayout = LayoutInflater.Inflate(Resource.Layout.LocationDetailView, null);
 
+            View _contentLayout = locationDetailLayout.FindViewById<LinearLayout>(Resource.Id.contentLayout);
+            //_contentLayout.
             // Create your application here
         }
     }
