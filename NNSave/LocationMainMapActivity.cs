@@ -18,44 +18,25 @@ using System.Threading.Tasks;
 
 namespace NNSave
 {
-    [Activity(Label = "LocationDetailActivity")]
-    public class LocationDetailActivity : Activity, IOnMapReadyCallback
+    [Activity(Label = "LocationMainMapActivity")]
+    public class LocationMainMapActivity : Activity, IOnMapReadyCallback
     {
-        private List<Location> locationList = new List<Location>();
-        private ListView locationDetailListView;
         ImageView _GetDirectionsActionImageView;
         LatLng _GeocodedLocation;
         GoogleMap _GoogleMap;
-        protected override async void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.LocationDetailView);
+            SetContentView(Resource.Layout.LocationMapView);
+            // Create your application here
 
-            locationDetailListView = FindViewById<ListView>(Resource.Id.locationsDetailListView);
-
-            Location detail = new Location();
-            detail.name = Intent.GetStringExtra("LocationName");
-            detail.address = Intent.GetStringExtra("LocationAddress");
-            detail.phone = Intent.GetStringExtra("LocationPhone");
-            detail.email = Intent.GetStringExtra("LocationEmail");
-            detail.description = Intent.GetStringExtra("LocationDescription");
-            detail.visitCount= Intent.GetIntExtra("LocationVisitCount", 0);        
-            detail.latitude = Intent.GetDoubleExtra("LocationLat", 0);
-            detail.longitude = Intent.GetDoubleExtra("LocationLon", 0);
-
-            var locationDetailLayout = LayoutInflater.Inflate(Resource.Layout.LocationDetailView, null);
-
-            locationList.Add(detail);
-            locationDetailListView.Adapter = new LocationDetailAdapter(this, locationList);
-
-            var mapview = FindViewById<MapView>(Resource.Id.map);
+            var mapview = FindViewById<MapView>(Resource.Id.bigMap);
 
             // create the map view with the context
             mapview.OnCreate(savedInstanceState);
 
             // get the map, which calls the OnMapReady() method below (by virtue of the IOnMapReadyCallback interface that this class implements)
             mapview.GetMapAsync(this);
-
         }
 
         public async void OnMapReady(GoogleMap googleMap)
@@ -67,7 +48,7 @@ namespace NNSave
             if (_GeocodedLocation != null)
             {
                 // because we now have coordinates, show the get directions action image view, and wire up its click handler
-               // _GetDirectionsActionImageView.Visibility = ViewStates.Visible;
+                // _GetDirectionsActionImageView.Visibility = ViewStates.Visible;
 
                 // initialze the map
                 MapsInitializer.Initialize(this);

@@ -20,7 +20,7 @@
                 android:layout_width="200dp"
                 android:textSize="16dp"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
+                android:textColor="#203260"
                 android:layout_alignParentLeft="true"
                 android:textStyle="bold"
                 android:gravity="left" />

@@ -13,12 +13,13 @@ using NNSave.Services;
 
 namespace NNSave
 {
-    [Activity(Label = "NNSave", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "NN$ave", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         int count = 1;
         private List<Location> locationList = new List<Location>();
         private ListView locationListView;
+        private Button mapButton;
         private RetrieveData dataGetter = new RetrieveData();
         protected override async void OnCreate(Bundle bundle)
         {
@@ -31,24 +32,11 @@ namespace NNSave
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-           // Button button = FindViewById<Button>(Resource.Id.MyButton);
-
-            //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
-
             locationListView = FindViewById<ListView>(Resource.Id.locationsListView);
-            locationListView.ItemClick += Item_Clicked;
+            mapButton = FindViewById<Button>(Resource.Id.goToMapButton);
 
-            //test data
-            //Location test = new Location();
-            //test.address = "123 testing address";
-            //test.name = "Plaza Azteca";
-            //test.visitCount = 165;
-            //locationList.Add(test);
-            //locationList.Add(test);
-            //locationList.Add(test);
-
+            locationListView.ItemClick += Item_Clicked;            
+            mapButton.Click += Map_Button_Clicked;
             //real data
             locationList = await dataGetter.GetAllLocations();            
             locationListView.Adapter = new LocationListAdapter(this, locationList);
@@ -67,10 +55,17 @@ namespace NNSave
             intent.PutExtra("LocationName", clickedLoc.name);
             intent.PutExtra("LocationAddress", clickedLoc.address);
             intent.PutExtra("LocationPhone", clickedLoc.phone);
-            //intent.PutExtra("LocationEmail", clickedLoc.email.ToString());
+            intent.PutExtra("LocationEmail", clickedLoc.email);
             intent.PutExtra("LocationDescription", clickedLoc.description);
+            intent.PutExtra("LocationVisitCount", clickedLoc.visitCount);
             intent.PutExtra("LocationLat", clickedLoc.latitude);
             intent.PutExtra("LocationLon", clickedLoc.longitude);
+            StartActivity(intent);
+        }
+
+        protected void Map_Button_Clicked(object sender, EventArgs ea)
+        {
+            var intent = new Intent(this, typeof(LocationMainMapActivity));
             StartActivity(intent);
         }
 
