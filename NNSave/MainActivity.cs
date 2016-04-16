@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using NNSave.Data;
 
 namespace NNSave
 {
@@ -12,6 +13,7 @@ namespace NNSave
     public class MainActivity : Activity
     {
         int count = 1;
+        Location loc = new Location();
 
         protected override void OnCreate(Bundle bundle)
         {
