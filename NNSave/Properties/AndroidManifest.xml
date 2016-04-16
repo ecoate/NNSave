@@ -1,15 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="NNSave.NNSave" android:versionCode="1" android:versionName="1.0">
-  <uses-sdk android:minSdkVersion="16" />
-
-  <application android:label="NNSave">
-
-    <!-- Put your Google Maps V2 API Key here. -->
-    <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAlg8ng0u2_B_fg5MGgvEayR8d8QsJ_9nw" />
-    <meta-data android:name="com.google.android.gms.version" android:value="6.4.13" />
-  </application>
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="NNSave.NNSave" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="16" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<application android:label="NNSave">
+		<!-- Put your Google Maps V2 API Key here. -->
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAlg8ng0u2_B_fg5MGgvEayR8d8QsJ_9nw" />
+		<meta-data android:name="com.google.android.gms.version" android:value="6.4.13" />
+	</application>
 </manifest>
-
-
-

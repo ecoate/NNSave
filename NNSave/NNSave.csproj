@@ -56,6 +56,12 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceApp.cs" />
+    <Compile Include="Services\LocationDetection.cs" />
+    <Compile Include="Services\LocationService.cs" />
+    <Compile Include="Services\LocationServiceBinder.cs" />
+    <Compile Include="Services\LocationServiceConnection.cs" />
+    <Compile Include="Services\ServiceConnectedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
