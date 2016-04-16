@@ -7,14 +7,16 @@ using Android.Widget;
 using Android.OS;
 using NNSave.Data;
 
+using System.Collections.Generic;
+
 namespace NNSave
 {
     [Activity(Label = "NNSave", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         int count = 1;
-        Location loc = new Location();
-
+        private List<Location> locationList = new List<Location>();
+        private ListView locationListView;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -27,6 +29,17 @@ namespace NNSave
             Button button = FindViewById<Button>(Resource.Id.MyButton);
 
             button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+
+            locationListView = FindViewById<ListView>(Resource.Id.locationsListView);
+            Location test = new Location();
+            test.address = "123 testing address";
+            test.name = "Plaza Azteca";
+            test.visitCount = 165;
+            locationList.Add(test);
+            locationList.Add(test);
+            locationList.Add(test);
+
+            locationListView.Adapter = new LocationListAdapter(this, locationList);
         }
     }
 }
