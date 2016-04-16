@@ -11,7 +11,8 @@ namespace NNSave.Data
 {
     public class RetrieveData
     {
-        const string dataServer = "http://private-722921-nnsave.apiary-mock.com/{0}";
+        //const string dataServer = "http://private-722921-nnsave.apiary-mock.com/{0}";
+        const string dataServer = "http://137.155.04.93:8000";
         const string latlongstr = "locations/?latitude={0}&longitude={1}";
         const string idStr = "locations/{0}";
         const string baseStr = "locations";
