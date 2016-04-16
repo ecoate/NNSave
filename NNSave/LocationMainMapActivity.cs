@@ -21,6 +21,8 @@ namespace NNSave
     [Activity(Label = "LocationMainMapActivity")]
     public class LocationMainMapActivity : Activity, IOnMapReadyCallback
     {
+        private List<Location> locationList = new List<Location>();
+        private RetrieveData dataGetter = new RetrieveData();
         ImageView _GetDirectionsActionImageView;
         LatLng _GeocodedLocation;
         GoogleMap _GoogleMap;
@@ -41,12 +43,14 @@ namespace NNSave
 
         public async void OnMapReady(GoogleMap googleMap)
         {
+            LatLng coords;
             _GoogleMap = googleMap;
             _GoogleMap.UiSettings.MapToolbarEnabled = true;
-            _GeocodedLocation = await GetPositionAsync();
 
-            if (_GeocodedLocation != null)
-            {
+            _GoogleMap.UiSettings.ZoomControlsEnabled = true;
+            _GoogleMap.UiSettings.SetAllGesturesEnabled(true);            
+            locationList = await dataGetter.GetAllLocations();
+
                 // because we now have coordinates, show the get directions action image view, and wire up its click handler
                 // _GetDirectionsActionImageView.Visibility = ViewStates.Visible;
 
@@ -54,18 +58,20 @@ namespace NNSave
                 MapsInitializer.Initialize(this);
 
                 // display the map region that contains the point. (the zoom level has been defined on the map layout in AcquaintanceDetail.axml)
+                _GeocodedLocation = new LatLng(37.063892, -76.493166);
                 _GoogleMap.MoveCamera(CameraUpdateFactory.NewLatLng(_GeocodedLocation));
 
                 // create a new pin
                 var marker = new MarkerOptions();
 
-                // set the pin's position
-                marker.SetPosition(new LatLng(_GeocodedLocation.Latitude, _GeocodedLocation.Longitude));
-
-                // add the pin to the map
-                _GoogleMap.AddMarker(marker);
-            }
-
+                foreach (Location loc in locationList)
+                {
+                    // set the pin's position
+                    marker.SetPosition(new LatLng(loc.latitude, loc.longitude));
+                    marker.SetTitle(loc.name + " - " + loc.distance + "Mi");
+                    // add the pin to the map
+                    _GoogleMap.AddMarker(marker);                
+                }            
         }
 
         async Task<LatLng> GetPositionAsync()

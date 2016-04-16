@@ -340,14 +340,14 @@ namespace NNSave
 			// aapt resource value: 0x7f07000a
 			public const int auto = 2131165194;
 			
-			// aapt resource value: 0x7f070015
-			public const int bigMap = 2131165205;
+			// aapt resource value: 0x7f070016
+			public const int bigMap = 2131165206;
 			
 			// aapt resource value: 0x7f07000b
 			public const int dark = 2131165195;
 			
-			// aapt resource value: 0x7f070016
-			public const int goToMapButton = 2131165206;
+			// aapt resource value: 0x7f070017
+			public const int goToMapButton = 2131165207;
 			
 			// aapt resource value: 0x7f070000
 			public const int hybrid = 2131165184;
@@ -364,6 +364,9 @@ namespace NNSave
 			// aapt resource value: 0x7f070012
 			public const int locationDescriptionTextView = 2131165202;
 			
+			// aapt resource value: 0x7f070015
+			public const int locationDistanceTextView = 2131165205;
+			
 			// aapt resource value: 0x7f07000d
 			public const int locationNameTextView = 2131165197;
 			
@@ -379,8 +382,8 @@ namespace NNSave
 			// aapt resource value: 0x7f070013
 			public const int locationsDetailListView = 2131165203;
 			
-			// aapt resource value: 0x7f070017
-			public const int locationsListView = 2131165207;
+			// aapt resource value: 0x7f070018
+			public const int locationsListView = 2131165208;
 			
 			// aapt resource value: 0x7f070014
 			public const int map = 2131165204;

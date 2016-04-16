@@ -55,7 +55,7 @@ namespace NNSave
             }
 
             convertView.FindViewById<TextView>(Resource.Id.locationNameTextView).Text = item.name;
-            convertView.FindViewById<TextView>(Resource.Id.locationAddressTextView).Text = item.address;
+            convertView.FindViewById<TextView>(Resource.Id.locationDistanceTextView).Text = item.distance.ToString() + " Miles";
             convertView.FindViewById<TextView>(Resource.Id.locationVistCountTextView).Text = "Visits: " + item.visitCount.ToString();
 
             return convertView;

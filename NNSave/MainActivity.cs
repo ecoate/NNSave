@@ -8,6 +8,10 @@ using Android.OS;
 using NNSave.Data;
 using System.Collections.Generic;
 
+using Android.Gms.Maps;
+using Android.Gms.Maps.Model;
+using System.Threading.Tasks;
+
 using System.Collections.Generic;
 using NNSave.Services;
 
@@ -56,6 +60,7 @@ namespace NNSave
             intent.PutExtra("LocationAddress", clickedLoc.address);
             intent.PutExtra("LocationPhone", clickedLoc.phone);
             intent.PutExtra("LocationEmail", clickedLoc.email);
+            intent.PutExtra("LocationDistance", clickedLoc.distance);
             intent.PutExtra("LocationDescription", clickedLoc.description);
             intent.PutExtra("LocationVisitCount", clickedLoc.visitCount);
             intent.PutExtra("LocationLat", clickedLoc.latitude);
@@ -65,7 +70,17 @@ namespace NNSave
 
         protected void Map_Button_Clicked(object sender, EventArgs ea)
         {
+            List<LatLng> coords = new List<LatLng>();
+            LatLng convert;
             var intent = new Intent(this, typeof(LocationMainMapActivity));
+
+            //foreach(Location loc in locationList)
+            //{
+            //    convert = new LatLng(loc.latitude, loc.longitude);
+            //    coords.Add(convert);
+            //}
+
+            //intent.Put("LocationCoords", coords);
             StartActivity(intent);
         }
 
