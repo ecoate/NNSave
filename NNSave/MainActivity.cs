@@ -82,6 +82,7 @@ namespace NNSave
         {
             Android.Locations.Location location = e.Location;
             //Log.Debug(logTag, "Foreground updating");
+            LocationDetection.LocationChanged(e.Location, this);
 
             // these events are on a background thread, need to update on the UI thread
             //RunOnUiThread(() => {

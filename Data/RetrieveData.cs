@@ -109,14 +109,14 @@ namespace NNSave.Data
 
         #region create new detected location
 
-        public async Task<List<Location>> DetectLocation(double latitude, double longitude, double distance = -1, int count = -1)
+        public async Task<Location> DetectLocation(string deviceID, double latitude, double longitude, double distance = -1)
         {
             try
             {
-                string endpoint = createURLEnd(latitude, longitude, distance, count);
-                string uri = string.Format(dataServer, endpoint);
+                //string endpoint = createURLEnd(latitude, longitude, distance, count);
+                string uri = string.Format(dataServer, baseStr);
 
-                List<Location> locs = (await SendLocationAsync(uri));
+                Location locs = (await SendLocationAsync(deviceID, uri, latitude, longitude, distance));
 
 
                 return locs;
@@ -179,19 +179,33 @@ namespace NNSave.Data
 
         }
 
-        private async Task<List<Location>> SendLocationAsync(string uri)
+        private async Task<Location> SendLocationAsync(string deviceID, string uri, double latitude, double longitude, double distance = -1)
         {
-            List<Location> locList = new List<Location>();
+            Location locList = new Location();
+            string reqData = "{'deviceID':'" + deviceID + "', 'latitude': '" + latitude + "', 'longitude': '" + longitude + "'";
+            reqData += distance > 0 ? ", 'distance': '" + distance + "'": "";
+                reqData += "}";
+
+           
+              
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(reqData);
+            
+
             var httpReq = (HttpWebRequest)HttpWebRequest.Create(new Uri(uri));
             httpReq.ContentType = "application/json";
             httpReq.Method = "POST";
+
+            using (Stream requestStream = await httpReq.GetRequestStreamAsync())
+            {
+                requestStream.Write(data, 0, data.Length);
+            }
 
             using (WebResponse httpRes = await httpReq.GetResponseAsync())
             {
                 using (var reader = new StreamReader(httpRes.GetResponseStream()))
                 {
                     var str = reader.ReadToEnd();
-                    locList = JsonConvert.DeserializeObject<List<Location>>(str);
+                    locList = JsonConvert.DeserializeObject<Location>(str);
 
                 }
             }
